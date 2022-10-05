@@ -18,6 +18,25 @@ namespace PLGN{
         int n;
         Vertex vertex[N_MAX] = {};
     public:
+        int get_max_n() const{
+            return max_n;
+        }
+        int get_n() const{
+            return n;
+        }
+        void set_n(int data_n){
+            if(data_n >= 0){
+                n = data_n;
+            }
+            else{
+                throw std::invalid_argument("Incorrect data");
+            }
+        }
+        void set_coordinates(Vertex * data_vertex){
+            for(int i(0); i<n; ++i){
+                vertex[i] = data_vertex[i];
+            }
+        }
         Polygon(){
             n = 0;
         }
@@ -95,10 +114,4 @@ namespace PLGN{
 
 int dialog(const char *msgs[], int);
 int D_Set_Data(PLGN::Polygon &);
-int D_Get_Data(PLGN::Polygon &);
-int D_Get_Polar_Radius_By_Angle(PLGN::Polygon &);
-int D_Get_Radius_Of_Curvature_By_Polar_Radius(PLGN::Polygon &);
-int D_Get_Radius_Of_Curvature_By_Angle(PLGN::Polygon &);
-int D_Get_Sector_Area_By_Angle(PLGN::Polygon &);
-int D_Get_Area_Of_Lemniscate(PLGN::Polygon &);
-int D_Analytically_Get_Radius_Of_Curvature_By_Angle(PLGN::Polygon &);
+int D_Print(PLGN::Polygon &);
