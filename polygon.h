@@ -46,7 +46,7 @@ namespace PLGN{
             vertex[0].y = y;
         }
         Polygon(int n, Vertex * vertex){
-            if(n >= 1){
+            if(n >= 1 && n <= max_n){
                 this->n = n;
                 for(int i(0); i<n; ++i){
                     this->vertex[i] = vertex[i];
@@ -57,7 +57,7 @@ namespace PLGN{
             }
         }
         std::pair<float, float> get_coordinates(int k){
-            if(k <= n || k > 0){
+            if(k <= n && k > 0){
                 return {vertex[k - 1].x, vertex[k - 1].y};
             }
             else{
@@ -80,6 +80,11 @@ namespace PLGN{
             }
             else{
                 Polygon polygon = *this;
+
+                for(int i(0); i<n; ++i){
+                    polygon.vertex[i].weight = 1;
+                }
+
                 for(int i(n-2); i>=0; --i){
                     polygon.vertex[i].x = (polygon.vertex[i].x * (float)polygon.vertex[i].weight + polygon.vertex[i+1].x * (float)polygon.vertex[i+1].weight)/(float)(polygon.vertex[i].weight + polygon.vertex[i+1].weight);
                     polygon.vertex[i].y = (polygon.vertex[i].y * (float)polygon.vertex[i].weight + polygon.vertex[i+1].y * (float)polygon.vertex[i+1].weight)/(float)(polygon.vertex[i].weight + polygon.vertex[i+1].weight);
@@ -115,3 +120,8 @@ namespace PLGN{
 int dialog(const char *msgs[], int);
 int D_Set_Data(PLGN::Polygon &);
 int D_Print(PLGN::Polygon &);
+int D_Center_Of_Gravity(PLGN::Polygon &);
+int D_Add_Vertex(PLGN::Polygon &);
+int D_Rotate_On_Angle(PLGN::Polygon &);
+int D_Parallel_Transfer(PLGN::Polygon &);
+int D_Get_Coordinates(PLGN::Polygon &);
