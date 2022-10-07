@@ -43,13 +43,12 @@ int D_Set_Data(PLGN::Polygon & polygon){
         std::cin >> vertex[i].y;
     }
     try{
-        polygon.set_n(n);
+        polygon.set_coordinates(n, vertex);
         std::cout << "OK\n";
     }
     catch(std::invalid_argument& exception){
         std::cout << "Number of vertex mast be >= 0" << "\n";
     }
-    polygon.set_coordinates(vertex);
     return 1;
 }
 
@@ -58,15 +57,15 @@ int D_Print(PLGN::Polygon & polygon){
     std::cout << "Maximum number of vertex: " << polygon.get_max_n() << "\n";
     std::cout << "Number of vertex: " << n << "\n";
     for(int i(0); i<n; ++i){
-        std::cout << i+1 << ":  x = " << polygon.get_coordinates(i+1).first << ";  y = " << polygon.get_coordinates(i+1).second << "\n";
+        std::cout << i+1 << ":  x = " << polygon.get_coordinates(i+1).x << ";  y = " << polygon.get_coordinates(i+1).y << "\n";
     }
     return 1;
 }
 
 int D_Center_Of_Gravity(PLGN::Polygon & polygon){
     try{
-        float x = polygon.center_of_gravity().first;
-        float y = polygon.center_of_gravity().second;
+        float x = polygon.center_of_gravity().x;
+        float y = polygon.center_of_gravity().y;
         std::cout << "Center of gravity:  x = " << x << " ,  y = " << y << "\n";
     }
     catch(std::invalid_argument& exception){
@@ -127,8 +126,8 @@ int D_Get_Coordinates(PLGN::Polygon & polygon){
     std::cout << "Enter number of vertex: ";
     std::cin >> k;
     try{
-        float x = polygon.get_coordinates(k).first;
-        float y = polygon.get_coordinates(k).second;
+        float x = polygon.get_coordinates(k).x;
+        float y = polygon.get_coordinates(k).y;
         std::cout << "Coordinates of this vertex:  x = " << x << " ,  y = " << y << "\n";
     }
     catch(std::invalid_argument& exception){

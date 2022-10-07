@@ -3,4 +3,4 @@ project(lab3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(lab3 main.cpp polygon.h dialog_functions.cpp)
+add_executable(lab3 main.cpp polygon.h dialog_functions.cpp polygon.cpp)
