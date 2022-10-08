@@ -29,16 +29,30 @@ namespace PLGN{
 
         Polygon(int n, Vertex * vertex);
 
-        Vertex get_coordinates(int k);
+        Vertex get_coordinates(int k) const;
 
         void add_vertex(float x, float y);
 
-        Vertex center_of_gravity();
+        Vertex center_of_gravity() const;
 
         void rotate(float x0, float y0, int fi);
 
         void parallel_transfer(float x, float y);
+
+        void print(std::ostream& os) const;
+
+        //OVERLOADED OPERATORS
+
+        Vertex operator[](int i) const;
+
+        friend Polygon operator+(const Polygon& p1, const Polygon& p2);
+
+        friend Polygon& operator+=(Polygon& p1, const Polygon& p2);
+
+        friend Polygon& operator+=(Polygon& p1, const Vertex& v);
+
+        Vertex operator*() const;
+
+        friend std::ostream& operator<<(std::ostream& strm, const Polygon& polygon);
     };
 }
-
-

@@ -44,7 +44,7 @@ namespace PLGN{
         }
     }
 
-    Vertex Polygon::get_coordinates(int k){
+    Vertex Polygon::get_coordinates(int k) const{
         if(k <= n && k > 0){
             return vertex[k - 1];
         }
@@ -64,7 +64,7 @@ namespace PLGN{
         }
     }
 
-    Vertex Polygon::center_of_gravity(){
+    Vertex Polygon::center_of_gravity() const{
         if(n == 0){
             throw std::invalid_argument("Polygon is empty");
         }
@@ -98,6 +98,14 @@ namespace PLGN{
         for(int i(0); i<n; ++i){
             vertex[i].x += x;
             vertex[i].y += y;
+        }
+    }
+
+    void Polygon::print(std::ostream& os) const{
+        os << "Maximum number of vertex: " << max_n << "\n";
+        os << "Number of vertex: " << n << "\n";
+        for(int i(0); i<n; ++i){
+            os << i+1 << ":  x = " << vertex[i].x << ";  y = " << vertex[i].y << "\n";
         }
     }
 }
