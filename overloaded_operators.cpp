@@ -7,12 +7,14 @@ namespace PLGN{
 
     Polygon operator+(const Polygon& p1, const Polygon& p2){
         Vertex new_vertex[p1.n + p2.n];
-        for(int i(0); i<p1.n; ++i){
+        memcpy(new_vertex, p1.vertex, p1.n*sizeof(Vertex));
+        memcpy(new_vertex + p1.n, p2.vertex, p2.n*sizeof(Vertex));
+        /*for(int i(0); i<p1.n; ++i){
             new_vertex[i] = p1.vertex[i];
         }
         for(int i(0); i<p2.n; ++i){
             new_vertex[p1.n + i] = p2.vertex[i];
-        }
+        }*/
         Polygon polygon = Polygon(p1.n + p2.n, new_vertex);
         return polygon;
     }

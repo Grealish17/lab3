@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <cstring>
 #define PI 3.14159265
 
 #define N_MAX 5

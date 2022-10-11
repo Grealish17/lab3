@@ -59,9 +59,8 @@ int D_Print(PLGN::Polygon & polygon){
 
 int D_Center_Of_Gravity(PLGN::Polygon & polygon){
     try{
-        float x = (*polygon).x;
-        float y = (*polygon).y;
-        std::cout << "Center of gravity:  x = " << x << " ,  y = " << y << "\n";
+        Vertex v = *polygon;
+        std::cout << "Center of gravity:  x = " << v.x << " ,  y = " << v.y << "\n";
     }
     catch(std::invalid_argument& exception){
         std::cout << "Polygon is empty\n";
@@ -122,8 +121,8 @@ int D_Get_Coordinates(PLGN::Polygon & polygon){
     std::cout << "Enter number of vertex: ";
     std::cin >> k;
     try{
-        float x = polygon[k].x;
-        float y = polygon[k].y;
+        float x = polygon[k-1].x;
+        float y = polygon[k-1].y;
         std::cout << "Coordinates of this vertex:  x = " << x << " ,  y = " << y << "\n";
     }
     catch(std::invalid_argument& exception){
