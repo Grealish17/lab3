@@ -26,11 +26,9 @@ namespace PLGN{
 
         Polygon();
 
-        Polygon(float x, float y);
+        Polygon(Vertex v);
 
         Polygon(int n, Vertex * vertex);
-
-        Vertex get_coordinates(int k) const;
 
         void add_vertex(float x, float y);
 
@@ -44,13 +42,13 @@ namespace PLGN{
 
         //OVERLOADED OPERATORS
 
-        Vertex operator[](int i) const;
+        const Vertex& operator[](int i) const;
+
+        Vertex& operator[](int i);
 
         friend Polygon operator+(const Polygon& p1, const Polygon& p2);
 
         friend Polygon& operator+=(Polygon& p1, const Polygon& p2);
-
-        friend Polygon& operator+=(Polygon& p1, const Vertex& v);
 
         Vertex operator*() const;
 

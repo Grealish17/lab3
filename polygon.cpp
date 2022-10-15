@@ -18,37 +18,20 @@ namespace PLGN{
             throw std::invalid_argument("Incorrect data");
         }
         memcpy(vertex, data_vertex, n*sizeof(Vertex));
-        /*for(int i(0); i<n; ++i){
-            vertex[i] = data_vertex[i];
-        }*/
     }
 
     Polygon::Polygon(){
         n = 0;
     }
 
-    Polygon::Polygon(float x, float y){
+    Polygon::Polygon(Vertex v) : vertex{v} {
         n = 1;
-        vertex[0].x = x;
-        vertex[0].y = y;
     }
 
     Polygon::Polygon(int n, Vertex * vertex){
         if(n >= 1 && n <= max_n){
             this->n = n;
             memcpy(this->vertex, vertex, n*sizeof(Vertex));
-            /*for(int i(0); i<n; ++i){
-                this->vertex[i] = vertex[i];
-            }*/
-        }
-        else{
-            throw std::invalid_argument("Incorrect data");
-        }
-    }
-
-    Vertex Polygon::get_coordinates(int k) const{
-        if(k < n && k >= 0){
-            return vertex[k];
         }
         else{
             throw std::invalid_argument("Incorrect data");
