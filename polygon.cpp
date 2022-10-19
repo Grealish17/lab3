@@ -1,4 +1,5 @@
 #include "polygon.h"
+#define PI 3.14159265
 
 namespace PLGN{
 

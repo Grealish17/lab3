@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "polygon.h"
 
 using namespace PLGN;
